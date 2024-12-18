@@ -28,6 +28,12 @@ public class Producto {
 		super();
 	}
 	
+	public Producto(String name, int price) {
+		this();
+		this.name = name;
+		this.price = price;
+	}
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name= "producto_factura", 

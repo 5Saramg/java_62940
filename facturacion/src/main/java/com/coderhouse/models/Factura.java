@@ -28,6 +28,11 @@ public class Factura {
 		super();
 	}
 	
+	public Factura(int total) {
+		this();
+		this.total = total;
+	}
+	
 	public Long getCode() {
 		return codeFac;
 	}
