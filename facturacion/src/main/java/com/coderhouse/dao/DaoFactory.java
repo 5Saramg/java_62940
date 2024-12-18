@@ -2,6 +2,7 @@ package com.coderhouse.dao;
 
 import org.springframework.stereotype.Service;
 
+import com.coderhouse.models.Cliente;
 import com.coderhouse.models.Factura;
 import com.coderhouse.models.Producto;
 
@@ -23,6 +24,11 @@ public class DaoFactory {
 	@Transactional
 	public void persistirProducto(Producto producto) {
 		em.persist(producto);
+	}
+	
+	@Transactional
+	public void persistirCliente(Cliente cliente) {
+		em.persist(cliente);
 	}
 
 }
