@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,16 +23,21 @@ public class Factura {
 	
 	private int total;
 	
-	@ManyToMany(mappedBy= "facturas", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy= "facturasProducto", fetch = FetchType.EAGER)
 	private List<Producto> productos = new ArrayList<>();
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Cliente cliente;
 	
 	public Factura() {
 		super();
 	}
 	
-	public Factura(int total) {
+	public Factura(Long codeFac, int total) {
 		this();
 		this.total = total;
+		this.codeFac = codeFac;
 	}
 	
 	public Long getCode() {
@@ -57,4 +64,21 @@ public class Factura {
 		this.productos = productos;
 	}
 
+	public Long getCodeFac() {
+		return codeFac;
+	}
+
+	public void setCodeFac(Long codeFac) {
+		this.codeFac = codeFac;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
 }

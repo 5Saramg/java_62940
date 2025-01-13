@@ -31,13 +31,15 @@ public class FacturacionApplication implements CommandLineRunner {
 			Producto prod4 = new Producto("Pasta", 8);
 			Producto prod5 = new Producto("Pollo", 4);
 			
-			Factura fact1 = new Factura(123);
-			Factura fact2 = new Factura(23423);
-			Factura fact3 = new Factura(1234233);
-			Factura fact4 = new Factura(734);
+			Factura fact1 = new Factura(001L, 123);
+			Factura fact2 = new Factura(002L, 23423);
+			Factura fact3 = new Factura(003L,1234233);
+			Factura fact4 = new Factura(004L,734);
 			
-			Cliente cliente1 = new Cliente("Milean", "Bormeo");
-			Cliente cliente2 = new Cliente("Karen", "Molinos");
+			Cliente cliente1 = new Cliente(111L,"Milean", "Bormeo");
+			Cliente cliente2 = new Cliente(112L,"Karen", "Molinos");
+			Cliente cliente3 = new Cliente(113L,"Daniela", "Medina");
+			Cliente cliente4 = new Cliente(114L,"Sol", "Silva");
 			
 			dao.persistirFactura(fact1);
 			dao.persistirFactura(fact2);
@@ -54,6 +56,11 @@ public class FacturacionApplication implements CommandLineRunner {
 			
 			dao.persistirCliente(cliente1);
 			dao.persistirCliente(cliente2);
+			
+			dao.asignarFacturaCliente(cliente1.getDni(), fact1.getCodeFac());
+			dao.asignarFacturaCliente(cliente1.getDni(), fact2.getCodeFac());
+			dao.asignarFacturaCliente(cliente2.getDni(), fact3.getCodeFac());
+			dao.asignarFacturaCliente(cliente4.getDni(), fact4.getCodeFac());
 			
 		}
 		catch(Exception e){

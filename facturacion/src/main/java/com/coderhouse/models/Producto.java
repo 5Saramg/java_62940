@@ -39,7 +39,7 @@ public class Producto {
 			name= "producto_factura", 
 			joinColumns= @JoinColumn(name= "code_prod"), 
 			inverseJoinColumns = @JoinColumn(name= "code_fact"))
-	private List<Factura> facturas = new ArrayList<>();
+	private List<Factura> facturasProducto = new ArrayList<>();
 
 	public Long getcodeFac() {
 		return codeProd;
@@ -66,10 +66,10 @@ public class Producto {
 	}
 
 	public List<Factura> getOrdenes() {
-		return facturas;
+		return facturasProducto;
 	}
 
 	public void setOrdenes(List<Factura> facturas) {
-		this.facturas = facturas;
+		this.facturasProducto = facturas;
 	}
 }
