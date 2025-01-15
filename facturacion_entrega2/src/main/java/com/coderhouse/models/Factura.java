@@ -33,10 +33,9 @@ public class Factura {
 		super();
 	}
 	
-	public Factura(Long codeFac, int total) {
+	public Factura(int total) {
 		this();
 		this.total = total;
-		this.codeFac = codeFac;
 	}
 	
 	public Long getCode() {
