@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coderhouse.models.Factura;
 import com.coderhouse.models.Producto;
 import com.coderhouse.services.ProductoService;
 
