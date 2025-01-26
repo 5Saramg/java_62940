@@ -1,6 +1,7 @@
 package com.coderhouse.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -19,6 +20,8 @@ public class Factura {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY) 
 	private Long codeFac;
+	
+	private Date fechaCreacion;
 	
 	private int total;
 	
@@ -76,6 +79,14 @@ public class Factura {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 	
 	

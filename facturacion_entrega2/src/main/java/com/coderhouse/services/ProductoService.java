@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.coderhouse.models.Factura;
 import com.coderhouse.models.Producto;
-import com.coderhouse.repositories.FacturaRepository;
 import com.coderhouse.repositories.ProductoRepository;
 
 import jakarta.transaction.Transactional;

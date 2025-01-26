@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coderhouse.dto.facturaClienteDTO;
+import com.coderhouse.dto.productosEnFacturaDTO;
 import com.coderhouse.models.Factura;
 import com.coderhouse.services.FacturaService;
 
@@ -87,6 +89,30 @@ public class FacturaController {
 		}
 		catch(IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@PostMapping("/asignarProductos")
+	public ResponseEntity<Factura> asignarProductosFactura(@RequestBody productosEnFacturaDTO dto) {
+		try{
+			Factura factura = facturaService.asignarProductos(dto);
+			return ResponseEntity.ok(factura);
+			
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@PostMapping("/asignarCliente")
+	public ResponseEntity<Factura> asignarClienteFactura(@RequestBody facturaClienteDTO dto){
+		try{
+			Factura factura = facturaService.asignarCliente(dto.getCodeCliente(), dto.getCodeFac());
+			return ResponseEntity.ok(factura);
+			
 		}
 		catch(Exception e){
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

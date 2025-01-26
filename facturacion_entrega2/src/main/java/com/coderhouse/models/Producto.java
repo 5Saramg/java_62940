@@ -22,17 +22,9 @@ public class Producto {
 	private Long codeProd;
 	
 	private String name;
+	private String descripcion;
 	private int price;
-	
-	public Producto() {
-		super();
-	}
-	
-	public Producto(String name, int price) {
-		this();
-		this.name = name;
-		this.price = price;
-	}
+	private int stock;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -40,14 +32,20 @@ public class Producto {
 			joinColumns= @JoinColumn(name= "code_prod"), 
 			inverseJoinColumns = @JoinColumn(name= "code_fact"))
 	private List<Factura> facturasProducto = new ArrayList<>();
-
-	public Long getcodeFac() {
-		return codeProd;
+	
+	public Producto() {
+		super();
 	}
-
-	public void setcodeFac(Long codeProd) {
-		this.codeProd = codeProd;
+	
+	public Producto(String name, int price, int stock, String descripcion) {
+		this();
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+		this.descripcion = descripcion;
 	}
+	
+
 
 	public String getName() {
 		return name;
@@ -72,4 +70,38 @@ public class Producto {
 	public void setOrdenes(List<Factura> facturas) {
 		this.facturasProducto = facturas;
 	}
+
+	public Long getCodeProd() {
+		return codeProd;
+	}
+
+	public void setCodeProd(Long codeProd) {
+		this.codeProd = codeProd;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public List<Factura> getFacturasProducto() {
+		return facturasProducto;
+	}
+
+	public void setFacturasProducto(List<Factura> facturasProducto) {
+		this.facturasProducto = facturasProducto;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
 }

@@ -23,7 +23,9 @@ public class Producto {
 	
 	private String name;
 	private int price;
-	
+	private int stock;
+
+
 	public Producto() {
 		super();
 	}
@@ -71,5 +73,21 @@ public class Producto {
 
 	public void setOrdenes(List<Factura> facturas) {
 		this.facturasProducto = facturas;
+	}
+	
+	public Long getCodeProd() {
+		return codeProd;
+	}
+
+	public void setCodeProd(Long codeProd) {
+		this.codeProd = codeProd;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 }
