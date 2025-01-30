@@ -1,7 +1,6 @@
 package com.coderhouse.models;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,7 +24,7 @@ public class Factura {
 	private Long codeFac;
 	
 	@Schema(description="Fecha de creación")
-	private Date fechaCreacion;
+	private String fechaCreacion;
 	
 	@Schema(description="Total pagado", requiredMode=Schema.RequiredMode.REQUIRED)
 	private int total;
@@ -87,13 +86,14 @@ public class Factura {
 		this.cliente = cliente;
 	}
 
-	public Date getFechaCreacion() {
+	public String getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
+	
 	
 	
 }

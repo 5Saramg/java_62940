@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.coderhouse.dto.facturaClienteDTO;
 import com.coderhouse.dto.productosEnFacturaDTO;
+import com.coderhouse.dto.timeDTO;
 import com.coderhouse.models.Factura;
 import com.coderhouse.services.FacturaService;
+import com.coderhouse.services.TimeService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,6 +36,9 @@ public class FacturaController {
 	
 	@Autowired
 	private FacturaService facturaService;
+	
+	@Autowired
+	private TimeService fechaService;
 	
 	@Operation(summary="Obtiene todas facturas generadas")
 	@ApiResponses(value= {
@@ -98,6 +103,11 @@ public class FacturaController {
 	@PostMapping
 	public ResponseEntity<Factura> createFactura(@RequestBody Factura factura) {
 		try {
+			timeDTO time = fechaService.obtenerFecha();
+			if(time != null) {
+				factura.setFechaCreacion(time.getDate());
+			}
+			
 			Factura nuevaFactura = facturaService.saveFactura(factura);
 			return ResponseEntity.status(HttpStatus.CREATED).body(nuevaFactura);
 		}
