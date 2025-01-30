@@ -1,5 +1,8 @@
 package com.coderhouse.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Modelo de asignacion de clientes a facturas",  title="Asignación de clientes")
 public class facturaClienteDTO {
 	
 	private Long codeFac;

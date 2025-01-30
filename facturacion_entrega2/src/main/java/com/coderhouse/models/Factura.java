@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,22 +14,27 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@Schema(description = "Modelo de Factura")
 @Entity
 @Table(name= "Facturas")
 public class Factura {
 	
+	@Schema(description="Número único de factura", requiredMode=Schema.RequiredMode.REQUIRED)
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY) 
 	private Long codeFac;
 	
+	@Schema(description="Fecha de creación")
 	private Date fechaCreacion;
 	
+	@Schema(description="Total pagado", requiredMode=Schema.RequiredMode.REQUIRED)
 	private int total;
 	
+	@Schema(description="Listado de productos en la factura", requiredMode=Schema.RequiredMode.REQUIRED)
 	@ManyToMany(mappedBy= "facturasProducto", fetch = FetchType.EAGER)
 	private List<Producto> productos = new ArrayList<>();
 	
-	
+	@Schema(description="Cliente asociado a la factura", requiredMode=Schema.RequiredMode.REQUIRED)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Cliente cliente;
 	

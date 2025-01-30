@@ -3,6 +3,7 @@ package com.coderhouse.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,13 +13,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+@Schema(description = "Modelo de cliente")
 @Entity
 @Table(name= "Clientes")
 public class Cliente {
+	@Schema(description="Número único en el sistema", requiredMode=Schema.RequiredMode.REQUIRED)
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY) 
 	private Long codeCliente;
 	
+	@Schema(description="Número de identificación del cleinte", requiredMode=Schema.RequiredMode.REQUIRED)
 	@Column(unique=true, nullable=false)
 	private Long dni;
 	

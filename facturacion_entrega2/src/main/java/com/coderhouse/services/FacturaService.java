@@ -3,6 +3,7 @@ package com.coderhouse.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.coderhouse.dto.productosEnFacturaDTO;
 import com.coderhouse.models.Cliente;
@@ -14,6 +15,7 @@ import com.coderhouse.repositories.ProductoRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class FacturaService {
 	
 	@Autowired

@@ -3,6 +3,7 @@ package com.coderhouse.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,19 +14,28 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 
+@Schema(description = "Modelo de Producto")
 @Entity
 @Table(name= "Productos")
 public class Producto {
-	
+	@Schema(description="Número único del producto", requiredMode=Schema.RequiredMode.REQUIRED)
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY) 
 	private Long codeProd;
 	
+	@Schema(description="Nombre del producto", requiredMode=Schema.RequiredMode.REQUIRED)
 	private String name;
+	
+	@Schema(description="Descripción del producto")
 	private String descripcion;
+	
+	@Schema(description="Precio del producto", requiredMode=Schema.RequiredMode.REQUIRED)
 	private int price;
+	
+	@Schema(description="Stock del producto", requiredMode=Schema.RequiredMode.REQUIRED)
 	private int stock;
 	
+	@Schema(description="Listado de ordenes asociadas al producto", requiredMode=Schema.RequiredMode.REQUIRED)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name= "producto_factura", 

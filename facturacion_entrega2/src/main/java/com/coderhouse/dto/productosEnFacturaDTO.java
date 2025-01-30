@@ -2,6 +2,9 @@ package com.coderhouse.dto;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Modelo de asignacion de productos a facturas", title="Asignación de productos")
 public class productosEnFacturaDTO {
 	
 	private Long codeFac;
